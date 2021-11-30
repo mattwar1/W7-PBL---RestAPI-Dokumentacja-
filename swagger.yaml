@@ -1,0 +1,136 @@
+swagger: "2.0"
+info:
+  description: "Test API do obsługi LED RGB. \n Wojciech Hrycenko, Michał Twarowski, Zuzanna Witczak"
+  version: "1.0.0"
+  title: "Imaginary Units Z4 - RestAPI - Test1"
+tags:
+- name: "led"
+  description: "-- dostęp do obsługi diody"
+paths:
+  /led/red:
+    post:
+      tags:
+      - "led"
+      summary: "Aktualizuje poziom jasności diody CZERWONEJ"
+      description: "Aktualizuje poziom jasności diody CZERWONEJ, następnie zwraca nowy (zaktualizowany) poziom"
+      operationId: "R_post_col"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Level"
+      responses:
+        "200":
+          description: "Udało się, zwrócono aktualny stan diody."
+          schema:
+            $ref: "#/definitions/Level"
+        "400":
+          description: "Niepoprawne dane."
+        "500":
+          description: "Błąd niespodziewany/błąd nieokreślony"
+    get:
+      tags:
+      - "led"
+      summary: "Zwraca aktualny poziom jasności diody CZERWONEJ"
+      description: "Zwraca aktualny poziom jasności diody CZERWONEJ"
+      operationId: "R_get_col"
+      responses:
+        "200":
+          description: "Udało się, zwrócono aktualny stan diody."
+          schema:
+            $ref: "#/definitions/Level"
+        "500":
+          description: "Błąd niespodziewany/błąd nieokreślony"
+  /led/green:
+    post:
+      tags:
+      - "led"
+      summary: "Aktualizuje poziom jasności diody ZIELONEJ"
+      description: "Aktualizuje poziom jasności diody ZIELONEJ, następnie zwraca nowy (zaktualizowany) poziom"
+      operationId: "G_post_col"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Level"
+      responses:
+        "200":
+          description: "Udało się, zwrócono aktualny stan diody."
+          schema:
+            $ref: "#/definitions/Level"
+        "400":
+          description: "Niepoprawne dane."
+        "500":
+          description: "Błąd niespodziewany/błąd nieokreślony"
+    get:
+      tags:
+      - "led"
+      summary: "Zwraca aktualny poziom jasności diody ZIELONEJ"
+      description: "Zwraca aktualny poziom jasności diody ZIELONEJ"
+      operationId: "G_get_col"
+      responses:
+        "200":
+          description: "Udało się, zwrócono aktualny stan diody."
+          schema:
+            $ref: "#/definitions/Level"
+        "500":
+          description: "Błąd niespodziewany/błąd nieokreślony"
+  /led/blue:
+    post:
+      tags:
+      - "led"
+      summary: "Aktualizuje poziom jasności diody NIEBIESKIEJ"
+      description: "Aktualizuje poziom jasności diody NIEBIESKIEJ, następnie zwraca nowy (zaktualizowany) poziom"
+      operationId: "B_post_col"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Level"
+      responses:
+        "200":
+          description: "Udało się, zwrócono aktualny stan diody."
+          schema:
+            $ref: "#/definitions/Level"
+        "400":
+          description: "Niepoprawne dane."
+        "500":
+          description: "Błąd niespodziewany/błąd nieokreślony"
+    get:
+      tags:
+      - "led"
+      summary: "Zwraca aktualny poziom jasności diody NIEBIESKIEJ"
+      description: "Zwraca aktualny poziom jasności diody NIEBIESKIEJ"
+      operationId: "B_get_col"
+      responses:
+        "200":
+          description: "Udało się, zwrócono aktualny stan diody."
+          schema:
+            $ref: "#/definitions/Level"
+        "500":
+          description: "Błąd niespodziewany/błąd nieokreślony"
+
+definitions:
+  Level:
+    type: "object"
+    required: 
+    - "level"
+    properties:
+      level:
+        type: "integer"
+        description: "Brightness level of a color (0-100)"
